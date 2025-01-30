@@ -1,0 +1,16 @@
+<template>
+    <sw-select-field
+            @change="setNewState(selectedValue, itemid)"
+            v-model="selectedValue"
+            :is-loading="false"
+            v-if="type === 'product'"
+    >
+        <option
+                v-for="state in orderPositionStates"
+                :key="state.id"
+                :value="state.id"
+                :selected="state.id === selectedValue"
+        >{{ getTranslation(state.technicalName) }}
+        </option>
+    </sw-select-field>
+</template>

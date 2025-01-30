@@ -1,0 +1,19 @@
+{
+  "orderPositionStatesTranslations": {
+    "ok": "[A0] ok",
+    "shipped": "[A1] Versendet",
+    "return_added": "[A2] Retoure angelegt",
+    "return_in_progress": "[A3] Retoure in Bearbeitung",
+    "return_ok": "[A4] Retoure ok",
+    "clarification_case": "[A5] Klärfall",
+    "completed": "[A6] Abgeschlossen",
+    "sold_out": "[A7] Artikel ausverkauft",
+    "warranty": "[A9] Gewährleistung",
+    "credit": "[A10] Gutschrift",
+    "canceled": "[A11] Storniert",
+    "in_progress": "[A12] In Bearbeitung",
+    "shipped_again": "[A13] Neuversand",
+    "warranty_shipped_again": "[A8] Gewährleistung Neuversand",
+    "sold_out_info": "[A14] Artikel ausverkauft Kunde informiert"
+  }
+}

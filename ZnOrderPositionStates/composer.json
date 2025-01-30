@@ -1,0 +1,24 @@
+{
+  "name": "er/order-position-states",
+  "description": "Order Position States",
+  "version": "2.0.0",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Er\\OrderPositionStates\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Nima Sorouri"
+    }
+  ],
+  "extra": {
+    "shopware-plugin-class": "Er\\OrderPositionStates\\ZnOrderPositionStates",
+    "label": {
+      "de-DE": "Order Position States",
+      "en-GB": "Order Position States"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Basic configuration</title>
+        <input-field type="text">
+            <name>orderPositionStates</name>
+            <label>Comma-seperated Order Position States</label>
+            <defaultValue>open, delivered, returned, refund, delayed, oversale, canceled, completed</defaultValue>
+            <copyable>true</copyable>
+            <required>true</required>
+        </input-field>
+    </card>
+    <card>
+        <component name="sw-entity-multi-id-select">
+            <name>deleteOrderPositionStates</name>
+            <entity>order_position_states</entity>
+            <label>Bestellpositionsstatus entfernen</label>
+            <labelProperty>technicalName</labelProperty>
+        </component>
+    </card>
+    <card>
+        <component name="sw-entity-single-select">
+            <name>defaultPositionState</name>
+            <entity>order_position_states</entity>
+            <label>Ausgangsstatus bei Bestelleingang (default value) definieren (z.B. open)</label>
+            <required>true</required>
+            <labelProperty>technicalName</labelProperty>
+        </component>
+    </card>
+</config>

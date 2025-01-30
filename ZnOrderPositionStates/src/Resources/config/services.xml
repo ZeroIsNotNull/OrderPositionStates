@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="must.logger" class="Psr\Log\LoggerInterface">
+            <factory service="Shopware\Core\Framework\Log\LoggerFactory" method="createRotating"/>
+            <argument type="string">must-logger</argument>
+        </service>
+        <service id="Zn\OrderPositionStates\Core\Checkout\OrderPositionStates\OrderPositionStatesDefinition">
+            <tag name="shopware.entity.definition" entity="order_position_states"/>
+        </service>
+        <service id="Zn\OrderPositionStates\Core\Checkout\Aggregate\OrderLineItemsStates\OrderLineItemStatesDefinition">
+            <tag name="shopware.entity.definition" entity="order_line_item_states"/>
+        </service>
+        <service id="Zn\OrderPositionStates\Core\Checkout\Aggregate\OrderPositionStatesTranslation\OrderPositionStatesTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="order_position_states_translation" />
+        </service>
+        <service id="Zn\OrderPositionStates\Core\Checkout\Aggregate\OrderLineItem\OrderLineItemExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="Zn\OrderPositionStates\Administration\ControllZn\OrderPositionStatesController" public="true">
+            <argument type="service" id="Zn\OrderPositionStates\Service\DalManager"/>
+            <argument type="service" id="must.logger"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+        <service id="Zn\OrderPositionStates\Subscriber\OrderSubscriber">
+            <argument type="service" id="Zn\OrderPositionStates\Service\DalManager"/>
+            <argument type="service" id="must.logger"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Zn\OrderPositionStates\Subscriber\PluginConfigSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="must.logger"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Zn\OrderPositionStates\Service\DalManager">
+            <argument type="service" id="version.repository"/>
+            <argument type="service" id="order_line_item.repository"/>
+            <argument type="service" id="order_line_item_states.repository"/>
+            <argument type="service" id="order_position_states.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="order_delivery.repository"/>
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="state_machine_state.repository"/>
+            <argument type="service" id="Shopware\Core\System\StateMachine\StateMachineRegistry"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="must.logger"/>
+        </service>
+    </services>
+</container>
